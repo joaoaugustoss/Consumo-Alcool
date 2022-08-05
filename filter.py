@@ -17,7 +17,7 @@ def fsq_api(fsq_id):
         url = "https://api.foursquare.com/v3/places/" + fsq_id
         headers = {
             "Accept": "application/json",
-            "Authorization": "fsq3RAol9iTtB0ePqUDE8ljPr3ZjL/2apDmd//4jdCXlPIs="
+            "Authorization": "API_KEY"
         }
         response = requests.get(url, headers=headers)
         data = json.loads(response.text)
