@@ -128,10 +128,13 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+*.DS_Store
 .DS_Store
 .swp
 .csv
 *.csv
 *.json
 .json
+.txt
+*.txt
 Twitter/database.json
