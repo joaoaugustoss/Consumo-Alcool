@@ -3,13 +3,13 @@ O número de pessoas acometidas por doenças relacionadas ao abuso no consumo de
 
 ## Código
 ### twitter_api.py
-O arquivo [twitter_api.py](Consumo-Alcool/twitter_api.py)  contém o código desenvolvido para a coleta de check-ins postados no Foursquare Swarm e publicados 
+O arquivo [twitter_api.py](twitter_api.py)  contém o código desenvolvido para a coleta de check-ins postados no Foursquare Swarm e publicados 
 no Twitter utilizados para montagem da base de dados a ser utilizada na sequência do trabalho. Para o funcionamento do código foram feitas requisições
 na [Twitter API](https://developer.twitter.com/en) utilizando o serviço de [Filtered Stream](https://developer.twitter.com/en/docs/twitter-api/tweets/filtered-stream/introduction), que retorna todos os tweets postados durante a execução do código com uma determinada tag
 escolhida pelo desenvolvedor.
 
 ### filter.py
-O arquivo [filter.py](Consumo-Alcool/filter.py) é o código desenvolvido para o tratamento dos dados coletados pelo código anterior. O tratamento foi
+O arquivo [filter.py](filter.py) é o código desenvolvido para o tratamento dos dados coletados pelo código anterior. O tratamento foi
 feito através da abertura do arquivo gerado pela coleta na API. O primeiro passo no código consiste na abertura do arquivo gerado pela API para armazenar
 os atributos necessários e descartar o que foi considerado lixo, para isso, foi utilizada a metodologia de abrir o código HTML do site utilizando a linguagem
 python observando os padrões necessários para a extração dos atributos necessários, que na primeira versão, foram utilizados como parâmetro na 
@@ -31,5 +31,5 @@ Seguem os atributos utilizados para a montagem do arquivo CSV:
 </ul>
 
 ### update.py
-O arquivo [update.py](IC/update.py) é o código desenvolvido para o tratamento de diferentes versões da base de dados fazendo com que ela fosse atualizada
+O arquivo [update.py](update.py) é o código desenvolvido para o tratamento de diferentes versões da base de dados fazendo com que ela fosse atualizada
 de acordo com os atributos escolhidos para a composição da mesma.
