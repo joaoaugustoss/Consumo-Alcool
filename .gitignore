@@ -138,3 +138,5 @@ dmypy.json
 .txt
 *.txt
 Twitter/database.json
+jupyter/check-in/data
+jupyter/alcohol/data
