@@ -50,10 +50,8 @@ def delete_all_rules(rules):
 def set_rules(delete):
     # You can adjust the rules if needed
     sample_rules = [
-        #{'value': 'check-in', 'has':'link', 'tag': 'foursquare'},
-        #{'value': 'foursquare.com', 'has':'link', 'tag': 'link'},
-        #{'value': 'instagram.com/explore/locations', 'has':'link', 'tag': 'instagram'},
         {'value': 'www.swarmapp.com/c/', 'has':'link', 'tag': 'swarm'},
+        #{"value":"www.swarmapp.com/c/", "has":"link", "tag":"swarm"},
         # has:geo -> retorna tweets que possuem tag de geolocalização fornecida pelo usuário
         # lang:en -> retorna tweets que estão marcados na língua inglesa
     ]
@@ -72,28 +70,30 @@ def set_rules(delete):
 
 def get_stream(set):
     f = open('database.json', 'a')
-    response = requests.get(
-        "https://api.twitter.com/2/tweets/search/stream", auth=bearer_oauth, stream=True,
-    )
-    print(response.status_code)
-    if response.status_code != 200:
-        raise Exception(
-            "Cannot get stream (HTTP {}): {}".format(
-                response.status_code, response.text
-            )
+    try:
+        response = requests.get(
+            "https://api.twitter.com/2/tweets/search/stream", auth=bearer_oauth, stream=True,
         )
-    for response_line in response.iter_lines():
-        if response_line:
-            dt = str(datetime.now())
-            json_response = json.loads(response_line)
-            date_time = {'timestamp':dt}
-            json_response['data'].update(date_time)
-            print('count: ' + str(i))
-            print(json_response, file=f)
-            print(json_response)
-            #print(json.dumps(json_response, indent=4, sort_keys=True))
-            #print(json_response['data']['id'] + "\t" + json_response['data']['text'] + "\n")
-
+        print(response.status_code)
+        if response.status_code != 200:
+            raise Exception(
+                "Cannot get stream (HTTP {}): {}".format(
+                    response.status_code, response.text
+                )
+            )
+        for response_line in response.iter_lines():
+            if response_line:
+                dt = str(datetime.now())
+                json_response = json.loads(response_line)
+                date_time = {'timestamp':dt}
+                json_response['data'].update(date_time)
+                #print('count: ' + str(i))
+                print(json_response, file=f)
+                #print(json_response)
+                #print(json.dumps(json_response, indent=4, sort_keys=True))
+                #print(json_response['data']['id'] + "\t" + json_response['data']['text'] + "\n")
+    except:
+        print("erro", file=f)
 
 def main():
     rules = get_rules()
@@ -104,3 +104,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
